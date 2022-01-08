@@ -1,0 +1,27 @@
+{
+  "name": "weekend-sql-todo-list",
+  "version": "1.0.0",
+  "description": "To-do list implemented in Javascript, using Node.js and PostgreSQL",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeremyacoop/weekend-sql-todo-list.git"
+  },
+  "author": "Jeremy Cooper",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "jquery": "^3.3.1",
+    "nodemon": "^2.0.15",
+    "pg": "^8.2.1"
+  },
+  "bugs": {
+    "url": "https://github.com/jeremyacoop/weekend-sql-todo-list/issues"
+  },
+  "homepage": "https://github.com/jeremyacoop/weekend-sql-todo-list#readme"
+}
