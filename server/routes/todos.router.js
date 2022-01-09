@@ -10,7 +10,7 @@ Router.post('/', (req, res) => {
     const queryText = `
                     INSERT INTO "to-do"
                         ("name", "section", "notes")
-                        VALUES ($2, $3, $7);                
+                        VALUES ($1, $2, $3);
                         `;
     pool.query(queryText, [newTD.name, newTD.section, newTD.notes])
         .then((result) => {
@@ -18,7 +18,7 @@ Router.post('/', (req, res) => {
             res.sendStatus(201);
         })
         .catch((err) => {
-            console.log('Errot adding new item ', err);
+            console.log('Error adding new item ', err);
             res.sendStatus(500);
         });
 }); // end POST

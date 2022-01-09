@@ -5,7 +5,7 @@ $(document).ready(handleReady);
 function handleReady() {
     console.log('jQuery is ready');
     $('#todo-form').on('click', '#create-task', createToDo);
-    }
+    }// end handleReady
 
 function createToDo() {
     console.log('click in createToDo');
