@@ -69,7 +69,6 @@ function displayToDos(todoItems) {
                 <td class="delete-button"><button>DELETE</button></td>
             </tr>`);
     }
-    console.log(todoItems[5].section);
 }// end displayToDos
 
 function deleteToDo() {
@@ -77,4 +76,16 @@ function deleteToDo() {
     console.log('Click in deleteToDo');
     let todoDelete = $(this).parents().data('todo-id');
     console.log(todoDelete);
-}
+    $.ajax({
+        type:   'DELETE',
+        url:    `/todolist/${todoDelete}`
+    })
+    .then(function(response) {
+        console.log('Response from server: ', response);
+        retrieveToDos();
+    })
+    .catch(function(error) {
+        console.log('Error in DELETE: ', error);
+        alert('Unable to delete entry at this time. Please try again later');
+    });// end DELETE
+}// end deleteToDo

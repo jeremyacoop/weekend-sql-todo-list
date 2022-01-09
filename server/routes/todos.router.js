@@ -8,10 +8,10 @@ Router.post('/', (req, res) => {
     console.log('Adding new item: ', newTD);
 
     const queryText = `
-                    INSERT INTO "to-do"
-                        ("name", "section", "notes")
-                        VALUES ($1, $2, $3);
-                        `;
+                        INSERT INTO "to-do"
+                            ("name", "section", "notes")
+                            VALUES ($1, $2, $3);
+                            `;
     pool.query(queryText, [newTD.name, newTD.section, newTD.notes])
         .then((result) => {
             console.log('Added item ', result);
@@ -25,7 +25,9 @@ Router.post('/', (req, res) => {
 
 Router.get('/', (req, res) => {
     console.log('in router GET');
-    const queryText = `SELECT * FROM "to-do"`;
+    const queryText = `
+                        SELECT * FROM "to-do"
+                        `;
     pool.query(queryText)
     .then((result) => {
         res.send(result.rows);
@@ -35,5 +37,24 @@ Router.get('/', (req, res) => {
         res.sendStatus(500);
     });
 });// end GET
+
+Router.delete('/:id', (req, res) => {
+    console.log('in router DELETE');
+    let todoID = req.params.id;
+    console.log(`Todo of ID ${todoID} will be removed from the database`);
+    const queryText = `
+                        DELETE FROM "to-do"
+                            WHERE "id" = $1;
+                            `;
+    pool.query(queryText, [todoID])
+    .then((response) => {
+        console.log(response);
+        res.sendStatus(200);
+    })
+    .catch((err) => {
+        console.log('Error in DELETE: ', err);
+        res.sendStatus(500);
+    });
+});// end DELETE
 
 module.exports = Router;
