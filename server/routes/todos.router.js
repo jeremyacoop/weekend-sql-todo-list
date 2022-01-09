@@ -61,6 +61,7 @@ Router.delete('/:id', (req, res) => {
 Router.put('/:id', (req, res) => {
     console.log('In PUT');
     let todoID = req.params.id;
+    console.log(todoID);
     console.log('Mark to-do item complete: ', req.body.complete);
     const queryText = `
                         UPDATE "to-do"

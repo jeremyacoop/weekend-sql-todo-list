@@ -78,11 +78,23 @@ function displayToDos(todoItems) {
                 //     class: "complete-box"
                 // }).appendTo($tr);
                 // $tr.append(`</td>`);
-                $tr.append(`<td class="complete-box"><input type="checkbox" checked ></td>`);
+                $tr.append(`
+                    <td >
+                        <input class="complete-box" type="checkbox" checked >
+                        </td>
+                    `);
             } else if(toDo.complete === false) {
-                $tr.append(`<td><input class="complete-box" type="checkbox"></td>`);
+                $tr.append(`
+                    <td >
+                        <input class="complete-box" type="checkbox" >
+                        </td>
+                    `);
             }
-            $tr.append(`<td class="delete-button"><button>DELETE</button></td>`);
+            $tr.append(`
+                    <td class="delete-button">
+                        <button>DELETE</button>
+                        </td>
+                        `);
             $tr.append(`</tr>`);
         $('#display-items').append($tr);
     }
@@ -109,7 +121,7 @@ function deleteToDo() {
 
 function toggleComplete() {
     console.log('Click in toggleComplete');
-    let todoID = $(this).parents().data('todo-id');
+    let todoID = $(this).parents().parents().data('todo-id');
     console.log(todoID);
 
     let markTask = {complete: false};
