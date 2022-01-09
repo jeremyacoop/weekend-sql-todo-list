@@ -27,11 +27,11 @@ function createToDo() {
     })
     .then(function(response) {
         console.log('Response from server: ', response);
+        retrieveToDos();
     })
     .catch(function(error) {
         console.log('Error in POST: ', error);
     });// end POST
-    retrieveToDos();
     // clear inputs
     $('#task-name').val('');
     $('#task-type').val('');
@@ -72,13 +72,15 @@ function displayToDos(todoItems) {
             $tr.append(`<td>${toDo.section}</td>`);
             $tr.append(`<td>${toDo.notes}</td>`);
             if(toDo.complete === true) {
-                $('<input>', {
-                    type: "checkbox",
-                    "checked": "checked",
-                    class: "complete-box"
-                }).appendTo($tr);
+                // $('<input>', {
+                //     type: "checkbox",
+                //     "checked": "checked",
+                //     class: "complete-box"
+                // }).appendTo($tr);
+                // $tr.append(`</td>`);
+                $tr.append(`<td class="complete-box"><input type="checkbox" checked ></td>`);
             } else if(toDo.complete === false) {
-                $tr.append(`<td><input class="complete-box" type="checkbox"</td>`);
+                $tr.append(`<td><input class="complete-box" type="checkbox"></td>`);
             }
             $tr.append(`<td class="delete-button"><button>DELETE</button></td>`);
             $tr.append(`</tr>`);
@@ -107,10 +109,10 @@ function deleteToDo() {
 
 function toggleComplete() {
     console.log('Click in toggleComplete');
-    let todoID = $(this).parents().parents().data('todo-id');
+    let todoID = $(this).parents().data('todo-id');
     console.log(todoID);
 
-    let markTask = {};
+    let markTask = {complete: false};
 
     if( $(this).is(':checked') ) {
         markTask.complete = true;
