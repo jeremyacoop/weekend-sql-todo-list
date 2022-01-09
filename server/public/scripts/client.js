@@ -8,6 +8,7 @@ function handleReady() {
     $('#todo-form').on('click', '#create-task', createToDo);
     $('#display-items').on('click', '.delete-button', deleteToDo);
     $('#display-items').on('click', '.complete-box', toggleComplete);
+    $('#display-items').on('click', '.incomplete-box', toggleComplete);
 }// end handleReady
 
 function createToDo() {
@@ -60,24 +61,16 @@ function displayToDos(todoItems) {
     console.log(todoItems);
     for(i=0; i<todoItems.length; i++) {
         let toDo = todoItems[i];
-            //$('#display-items').append(`
-            //<tr data-todo-id="${toDo.id}">
-            //    <td>${toDo.name}</td>
-            //    <td>${toDo.section}</td>
-            //    <td>${toDo.notes}</td>
-            //    <td class="delete-button"><button>DELETE</button></td>
-            //</tr>`);
-        let $tr = $(`<tr data-todo-id="${todoItems[i].id}">`);
+        let $tr = '';
+        if(toDo.complete === true) {
+            $tr = $(`<tr class="checked-box" data-todo-id="${todoItems[i].id}">`);
+            } else if(toDo.complete === false) {
+                $tr = $(`<tr data-todo-id="${todoItems[i].id}">`);
+            }
             $tr.append(`<td>${toDo.name}</td>`);
             $tr.append(`<td>${toDo.section}</td>`);
             $tr.append(`<td>${toDo.notes}</td>`);
             if(toDo.complete === true) {
-                // $('<input>', {
-                //     type: "checkbox",
-                //     "checked": "checked",
-                //     class: "complete-box"
-                // }).appendTo($tr);
-                // $tr.append(`</td>`);
                 $tr.append(`
                     <td >
                         <input class="complete-box" type="checkbox" checked >
@@ -86,7 +79,7 @@ function displayToDos(todoItems) {
             } else if(toDo.complete === false) {
                 $tr.append(`
                     <td >
-                        <input class="complete-box" type="checkbox" >
+                        <input class="incomplete-box" type="checkbox" >
                         </td>
                     `);
             }
