@@ -4,12 +4,39 @@
         <meta charset="UTF-8">
         <!--meta http-equiv="X-UA-Compatible" content="IE=edge"-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	    <!--link rel="stylesheet" media="screen" href="./styles/style.css" type="text/css" /-->
-	    <script src="./vendor/jQuery.js" charset="utf-8"></script>
+	    <link rel="stylesheet" media="screen" href="./styles/style.css" type="text/css" />
+	    <script src="./vendors/jQuery.js" charset="utf-8"></script>
 	    <script src="./scripts/client.js" charset="utf-8"></script>
         <title>To-do List</title>
     </head>
     <body>
-        
+        <header>
+            <h1></h1>
+        </header>
+       <main>
+           <section id="todo-form">
+            <input placeholder="Task name" type="text" id="task-name" size="50" required autofocus >
+            <input placeholder="Task type" type="text" id="task-type" size="50" ><br>
+            <input placeholder="Notes" type="text" id="task-notes" size="50" height="2" >
+            <button type="submit" id="create-task">Create task</button>
+           </section>
+           <section>
+               <div>
+                   <h2>To-do List:</h2>
+                   <table>
+                       <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Notes</th>
+                            </tr>
+                       </thead>
+                       <tbody id="display-items">
+
+                       </tbody>
+                   </table>
+               </div>
+           </section>
+       </main> 
     </body>
 </html>
