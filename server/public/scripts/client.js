@@ -61,13 +61,20 @@ function displayToDos(todoItems) {
     console.log(todoItems);
     for(i=0; i<todoItems.length; i++) {
         let toDo = todoItems[i];
-            $('#display-items').append(`
-            <tr data-todo-id="${toDo.id}">
-                <td>${toDo.name}</td>
-                <td>${toDo.section}</td>
-                <td>${toDo.notes}</td>
-                <td class="delete-button"><button>DELETE</button></td>
-            </tr>`);
+            //$('#display-items').append(`
+            //<tr data-todo-id="${toDo.id}">
+            //    <td>${toDo.name}</td>
+            //    <td>${toDo.section}</td>
+            //    <td>${toDo.notes}</td>
+            //    <td class="delete-button"><button>DELETE</button></td>
+            //</tr>`);
+        let $tr = $(`<tr data-todo-id="${todoItems[i].id}">`);
+            $tr.append(`<td>${toDo.name}</td>`);
+            $tr.append(`<td>${toDo.section}</td>`);
+            $tr.append(`<td>${toDo.notes}</td>`);
+            $tr.append(`<td class="delete-button"><button>DELETE</button></td>`);
+            $tr.append(`</tr>`);
+        $('#display-items').append($tr);
     }
 }// end displayToDos
 
