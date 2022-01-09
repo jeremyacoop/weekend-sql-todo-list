@@ -62,6 +62,7 @@ function displayToDos(todoItems) {
             $tr.append(`<td>${toDo.name}</td>`);
             $tr.append(`<td>${toDo.section}</td>`);
             $tr.append(`<td>${toDo.notes}</td>`);
+            $tr.append(`<td><button class+"delete-button">DELETE</button></td>`);
             $tr.append(`</tr>`);
         $('#display-items').append($tr);
     }
