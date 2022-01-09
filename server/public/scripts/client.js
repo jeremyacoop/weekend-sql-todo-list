@@ -72,6 +72,15 @@ function displayToDos(todoItems) {
             $tr.append(`<td>${toDo.name}</td>`);
             $tr.append(`<td>${toDo.section}</td>`);
             $tr.append(`<td>${toDo.notes}</td>`);
+            if(toDo.complete === true) {
+                $('<input>', {
+                    type: "checkbox",
+                    "checked": "checked",
+                    class: "complete-box"
+                }).appendTo($tr);
+            } else if(toDo.complete === false) {
+                $tr.append(`<td><input class="complete-box" type="checkbox"</td>`);
+            }
             $tr.append(`<td class="delete-button"><button>DELETE</button></td>`);
             $tr.append(`</tr>`);
         $('#display-items').append($tr);
