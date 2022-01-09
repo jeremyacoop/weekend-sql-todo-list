@@ -5,8 +5,8 @@ CREATE TABLE "to-do" (
 	"priority" CHAR(1),
     "deadline_date" DATE,
     "deadline_time" TIME,
+	"notes" VARCHAR(200),
 	"complete" BOOLEAN DEFAULT false,
 	"time_started" TIMESTAMP,
-	"time_completed" TIMESTAMP,
-	"notes" VARCHAR(200)
+	"time_completed" TIMESTAMP
 );
