@@ -3,7 +3,7 @@ const pool = require('../modules/pool');
 const Router = express.Router();
 
 Router.post('/', (req, res) => {
-    console.log('in POST');
+    console.log('in router POST');
     let newTD = req.body;
     console.log('Adding new item: ', newTD);
 
@@ -23,5 +23,17 @@ Router.post('/', (req, res) => {
         });
 }); // end POST
 
+Router.get('/', (req, res) => {
+    console.log('in router GET');
+    const queryText = `SELECT * FROM "to-do"`;
+    pool.query(queryText)
+    .then((result) => {
+        res.send(result.rows);
+    })
+    .catch((error) => {
+        console.log('Error: Could not retrieve list ', error);
+        res.sendStatus(500);
+    });
+});// end GET
 
 module.exports = Router;
