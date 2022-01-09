@@ -6,9 +6,8 @@ function handleReady() {
     console.log('jQuery is ready');
     retrieveToDos();
     $('#todo-form').on('click', '#create-task', createToDo);
-    $('#display-items').on('click', '.delete-button', 
-    //$('tr.todo-id').on('click', '.delete-button', function() {
-    deleteToDo)
+    $('#display-items').on('click', '.delete-button', deleteToDo);
+    $('#display-items').on('click', '.complete-box', toggleComplete);
 }// end handleReady
 
 function createToDo() {
@@ -28,11 +27,11 @@ function createToDo() {
     })
     .then(function(response) {
         console.log('Response from server: ', response);
+        retrieveToDos();
     })
     .catch(function(error) {
         console.log('Error in POST: ', error);
     });// end POST
-    retrieveToDos();
     // clear inputs
     $('#task-name').val('');
     $('#task-type').val('');
@@ -61,13 +60,43 @@ function displayToDos(todoItems) {
     console.log(todoItems);
     for(i=0; i<todoItems.length; i++) {
         let toDo = todoItems[i];
-            $('#display-items').append(`
-            <tr data-todo-id="${toDo.id}">
-                <td>${toDo.name}</td>
-                <td>${toDo.section}</td>
-                <td>${toDo.notes}</td>
-                <td class="delete-button"><button>DELETE</button></td>
-            </tr>`);
+            //$('#display-items').append(`
+            //<tr data-todo-id="${toDo.id}">
+            //    <td>${toDo.name}</td>
+            //    <td>${toDo.section}</td>
+            //    <td>${toDo.notes}</td>
+            //    <td class="delete-button"><button>DELETE</button></td>
+            //</tr>`);
+        let $tr = $(`<tr data-todo-id="${todoItems[i].id}">`);
+            $tr.append(`<td>${toDo.name}</td>`);
+            $tr.append(`<td>${toDo.section}</td>`);
+            $tr.append(`<td>${toDo.notes}</td>`);
+            if(toDo.complete === true) {
+                // $('<input>', {
+                //     type: "checkbox",
+                //     "checked": "checked",
+                //     class: "complete-box"
+                // }).appendTo($tr);
+                // $tr.append(`</td>`);
+                $tr.append(`
+                    <td >
+                        <input class="complete-box" type="checkbox" checked >
+                        </td>
+                    `);
+            } else if(toDo.complete === false) {
+                $tr.append(`
+                    <td >
+                        <input class="complete-box" type="checkbox" >
+                        </td>
+                    `);
+            }
+            $tr.append(`
+                    <td class="delete-button">
+                        <button>DELETE</button>
+                        </td>
+                        `);
+            $tr.append(`</tr>`);
+        $('#display-items').append($tr);
     }
 }// end displayToDos
 
@@ -89,3 +118,30 @@ function deleteToDo() {
         alert('Unable to delete entry at this time. Please try again later');
     });// end DELETE
 }// end deleteToDo
+
+function toggleComplete() {
+    console.log('Click in toggleComplete');
+    let todoID = $(this).parents().parents().data('todo-id');
+    console.log(todoID);
+
+    let markTask = {complete: false};
+
+    if( $(this).is(':checked') ) {
+        markTask.complete = true;
+    } else if( !$(this).is(':checked') ) {
+        markTask.complete = false;
+    }
+
+    $.ajax({
+        type:   'PUT',
+        url:    `/todolist/${todoID}`,
+        data:   markTask
+    })
+    .then(function(response) {
+        console.log('Back to client from mark_complete: ', response);
+        retrieveToDos();
+    })
+    .catch(function(error) {
+        console.log('Error in PUT: ', error);
+    });// end PUT
+}// end toggleComplete

@@ -2,3 +2,14 @@ body {
     background-color: black;
     color: cornflowerblue;
 }
+
+#todo-form {
+    background-color: darkslategray;
+
+}
+
+#display-items {
+    background-color: dodgerblue;
+    color: antiquewhite;
+    column-width: 100em;
+}
