@@ -13,3 +13,8 @@ body {
     color: antiquewhite;
     column-width: 100em;
 }
+
+.checked-box { 
+    background-color: dimgray;
+    color: lightblue;
+}
