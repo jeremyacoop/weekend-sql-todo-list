@@ -1,4 +1,5 @@
 const express = require('express');
+const { route } = require('express/lib/application');
 const pool = require('../modules/pool');
 const Router = express.Router();
 
@@ -47,8 +48,8 @@ Router.delete('/:id', (req, res) => {
                             WHERE "id" = $1;
                             `;
     pool.query(queryText, [todoID])
-    .then((response) => {
-        console.log(response);
+    .then((dbRes) => {
+        console.log(dbRes);
         res.sendStatus(200);
     })
     .catch((err) => {
@@ -56,5 +57,25 @@ Router.delete('/:id', (req, res) => {
         res.sendStatus(500);
     });
 });// end DELETE
+
+Router.put('/:id', (req, res) => {
+    console.log('In PUT');
+    let todoID = req.params.id;
+    console.log('Mark to-do item complete: ', req.body.complete);
+    const queryText = `
+                        UPDATE "to-do"
+                            SET "complete" = $2
+                            WHERE "id" = $1;
+                            `;
+    pool.query(queryText, [todoID, req.body.complete])
+    .then((dbRes) => {
+        console.log(dbRes);
+        res.sendStatus(200);
+    })
+    .catch((err) => {
+        console.log('Error in PUT: ', err);
+        res.sendStatus(500);
+    });
+});// end PUT
 
 module.exports = Router;
