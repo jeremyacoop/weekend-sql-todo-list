@@ -6,7 +6,10 @@ function handleReady() {
     console.log('jQuery is ready');
     retrieveToDos();
     $('#todo-form').on('click', '#create-task', createToDo);
-    }// end handleReady
+    $('#display-items').on('click', '.delete-button', 
+    //$('tr.todo-id').on('click', '.delete-button', function() {
+    deleteToDo)
+}// end handleReady
 
 function createToDo() {
     console.log('click in createToDo');
@@ -58,13 +61,20 @@ function displayToDos(todoItems) {
     console.log(todoItems);
     for(i=0; i<todoItems.length; i++) {
         let toDo = todoItems[i];
-        let $tr = $(`<tr data-todo-id="${toDo.id}">`);
-            $tr.append(`<td>${toDo.name}</td>`);
-            $tr.append(`<td>${toDo.section}</td>`);
-            $tr.append(`<td>${toDo.notes}</td>`);
-            $tr.append(`<td><button class+"delete-button">DELETE</button></td>`);
-            $tr.append(`</tr>`);
-        $('#display-items').append($tr);
+            $('#display-items').append(`
+            <tr data-todo-id="${toDo.id}">
+                <td>${toDo.name}</td>
+                <td>${toDo.section}</td>
+                <td>${toDo.notes}</td>
+                <td class="delete-button"><button>DELETE</button></td>
+            </tr>`);
     }
     console.log(todoItems[5].section);
 }// end displayToDos
+
+function deleteToDo() {
+    //event.preventDefault();
+    console.log('Click in deleteToDo');
+    let todoDelete = $(this).parents().data('todo-id');
+    console.log(todoDelete);
+}
