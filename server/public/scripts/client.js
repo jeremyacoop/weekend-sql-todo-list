@@ -72,20 +72,22 @@ function displayToDos(todoItems) {
             $tr.append(`<td>${toDo.notes}</td>`);
             if(toDo.complete === true) {
                 $tr.append(`
-                    <td >
+                    <td class="mark-box" >
                         <input class="complete-box" type="checkbox" checked >
+                        Task complete
                         </td>
                     `);
             } else if(toDo.complete === false) {
                 $tr.append(`
-                    <td >
+                    <td class="mark-box" >
                         <input class="incomplete-box" type="checkbox" >
+                        Task pending
                         </td>
                     `);
             }
             $tr.append(`
                     <td class="delete-button">
-                        <button>DELETE</button>
+                        <button class"delete-button-element">DELETE</button>
                         </td>
                         `);
             $tr.append(`</tr>`);

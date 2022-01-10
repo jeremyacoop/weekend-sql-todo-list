@@ -1,3 +1,4 @@
+//import swal from 'sweetalert';
 const pg = require('pg');
 
 const config = {

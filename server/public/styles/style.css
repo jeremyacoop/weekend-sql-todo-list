@@ -1,20 +1,85 @@
+html {
+    background-color: #04212B;
+    box-sizing: border-box;
+}
+
 body {
-    background-color: black;
-    color: cornflowerblue;
+    color: dodgerblue;
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+th, td {
+    width: 100em;
+
+}
+
+input {
+    background-color: lightcyan;
+    display: inline-flex;
+
+}
+
+label {
+    color: blanchedalmond;
+    display: block;
 }
 
 #todo-form {
     background-color: darkslategray;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
 
+#task-name {
+    margin: 10px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+#task-tag {
+    margin: 10px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    width: 100px;
+}
+
+#task-notes {
+    height: 50px;
+    margin: 10px;
+}
+
+#create-task {
+    margin-left: 40px;
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
 
 #display-items {
     background-color: dodgerblue;
     color: antiquewhite;
-    column-width: 100em;
 }
 
 .checked-box { 
     background-color: dimgray;
     color: lightblue;
+}
+
+.mark-box {
+    
+}
+
+.delete-button {
+    width: 100%;
+    display: block;
+}
+
+.delete-button-element {
+    background-color: blue; 
+
 }
