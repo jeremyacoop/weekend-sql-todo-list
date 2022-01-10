@@ -17,6 +17,7 @@ function createToDo() {
     let newToDo = {
         name:   $('#task-name').val(),
         section:   $('#task-tag').val(),
+        priority:   $('#task-priority').val(),
         notes:  $('#task-notes').val()
     }
     console.log(newToDo);
@@ -36,6 +37,7 @@ function createToDo() {
     // clear inputs
     $('#task-name').val('');
     $('#task-type').val('');
+    $('#task-priority').val('');
     $('#task-notes').val('');
 }// end createToDo
 
@@ -69,6 +71,7 @@ function displayToDos(todoItems) {
             }
             $tr.append(`<td>${toDo.name}</td>`);
             $tr.append(`<td>${toDo.section}</td>`);
+            $tr.append(`<td class="priority">${toDo.priority}</td>`);
             $tr.append(`<td>${toDo.notes}</td>`);
             if(toDo.complete === true) {
                 $tr.append(`

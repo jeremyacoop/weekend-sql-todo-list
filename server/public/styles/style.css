@@ -1,5 +1,5 @@
 html {
-    background-color: #04212B;
+    background-color: #082B38;
     box-sizing: border-box;
 }
 
@@ -29,6 +29,7 @@ input {
 label {
     color: blanchedalmond;
     display: block;
+    margin-left: 10px;
 }
 
 #todo-form {
@@ -49,6 +50,10 @@ label {
     width: 100px;
 }
 
+#task-priority {
+    margin-left: 10px;
+}
+
 #task-notes {
     height: 50px;
     margin: 10px;
@@ -63,6 +68,10 @@ label {
 #display-items {
     background-color: dodgerblue;
     color: antiquewhite;
+}
+
+.priority {
+    width: 40px;
 }
 
 .checked-box { 
