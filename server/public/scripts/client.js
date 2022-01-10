@@ -30,15 +30,15 @@ function createToDo() {
     .then(function(response) {
         console.log('Response from server: ', response);
         retrieveToDos();
+        // clear inputs
+        $('#task-name').val('');
+        $('#task-tag').val('');
+        $('#task-priority').val('');
+        $('#task-notes').val('');
     })
     .catch(function(error) {
         console.log('Error in POST: ', error);
     });// end POST
-    // clear inputs
-    $('#task-name').val('');
-    $('#task-type').val('');
-    $('#task-priority').val('');
-    $('#task-notes').val('');
 }// end createToDo
 
 function retrieveToDos() {
@@ -65,9 +65,9 @@ function displayToDos(todoItems) {
         let toDo = todoItems[i];
         let $tr = '';
         if(toDo.complete === true) {
-            $tr = $(`<tr class="checked-box" data-todo-id="${todoItems[i].id}">`);
+            $tr = $(`<tr class="checked-box" data-todo-id="${toDo.id}">`);
             } else if(toDo.complete === false) {
-                $tr = $(`<tr data-todo-id="${todoItems[i].id}">`);
+                $tr = $(`<tr data-todo-id="${toDo.id}">`);
             }
             $tr.append(`<td>${toDo.name}</td>`);
             $tr.append(`<td>${toDo.section}</td>`);

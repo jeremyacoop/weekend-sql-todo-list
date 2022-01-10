@@ -28,7 +28,7 @@ Router.get('/', (req, res) => {
     console.log('in router GET');
     const queryText = `
                         SELECT * FROM "to-do"
-                            ORDER BY "id" ASC
+                            ORDER BY "id" ASC;
                             `;
     pool.query(queryText)
     .then((result) => {
