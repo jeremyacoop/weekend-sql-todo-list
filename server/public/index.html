@@ -3,8 +3,9 @@
     <head>
         <meta charset="UTF-8">
         <!--meta http-equiv="X-UA-Compatible" content="IE=edge"-->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 	    <!-- <link rel="stylesheet" media="screen" href="./vendors/bootstrap.css" type="text/css" /> -->
+        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
 	    <link rel="stylesheet" media="screen" href="./styles/style.css" type="text/css" />
 	    <script src="./vendors/jQuery.js" charset="utf-8"></script>
 	    <script src="./scripts/client.js" charset="utf-8"></script>
@@ -12,12 +13,15 @@
     </head>
     <body>
         <header>
-            <h1></h1>
+            <h1>Add To-do Item</h1>
         </header>
        <main>
            <section id="todo-form">
+            <label for="task-name">Name</label>
             <input placeholder="Task name" type="text" id="task-name" size="50" required autofocus >
-            <input placeholder="Task tag" type="text" id="task-tag" size="50" ><br>
+            <label for="task-tag">Tag</label>
+            <input placeholder="Task tag" type="text" id="task-tag" size="50" >
+            <label for="task-notes">Notes</label>
             <input placeholder="Notes" type="text" id="task-notes" size="50" height="2" >
             <button type="submit" id="create-task">Create task</button>
            </section>
