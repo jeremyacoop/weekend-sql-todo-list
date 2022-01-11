@@ -10,10 +10,10 @@ Router.post('/', (req, res) => {
 
     const queryText = `
                         INSERT INTO "to-do"
-                            ("name", "section", "priority", "notes")
-                            VALUES ($1, $2, $3, $4);
+                            ("name", "section", "priority", "deadline_date", "deadline_time", "notes")
+                            VALUES ($1, $2, $3, $4, $5, $6);
                             `;
-    pool.query(queryText, [newTD.name, newTD.section, newTD.priority, newTD.notes])
+    pool.query(queryText, [newTD.name, newTD.section, newTD.priority, newTD.deadlineDate, newTD.deadlineTime, newTD.notes])
         .then((result) => {
             console.log('Added item ', result);
             res.sendStatus(201);

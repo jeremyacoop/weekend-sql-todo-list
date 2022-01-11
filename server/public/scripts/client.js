@@ -18,6 +18,8 @@ function createToDo() {
         name:   $('#task-name').val(),
         section:   $('#task-tag').val(),
         priority:   $('#task-priority').val(),
+        deadlineDate:   $('#task-deadline-date').val(),
+        deadlineTime:   $('#task-deadline-time').val(),
         notes:  $('#task-notes').val()
     }
     console.log(newToDo);
@@ -34,6 +36,8 @@ function createToDo() {
         $('#task-name').val('');
         $('#task-tag').val('');
         $('#task-priority').val('');
+        $('#task-deadline-date').val('');
+        $('#task-deadline-time').val('');
         $('#task-notes').val('');
     })
     .catch(function(error) {
@@ -72,6 +76,8 @@ function displayToDos(todoItems) {
             $tr.append(`<td>${toDo.name}</td>`);
             $tr.append(`<td>${toDo.section}</td>`);
             $tr.append(`<td class="priority">${toDo.priority}</td>`);
+            $tr.append(`<td>${toDo.deadline_date}</td>`);
+            $tr.append(`<td>${toDo.deadline_time}</td>`);
             $tr.append(`<td>${toDo.notes}</td>`);
             if(toDo.complete === true) {
                 $tr.append(`

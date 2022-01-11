@@ -54,6 +54,14 @@ label {
     margin: 10px;
 }
 
+#task-deadline-date {
+    margin: 10px;
+}
+
+#task-deadline-time {
+    margin: 10px;
+}
+
 #task-notes {
     height: 50px;
     margin: 10px;
