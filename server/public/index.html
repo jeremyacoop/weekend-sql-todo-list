@@ -21,6 +21,18 @@
             <input placeholder="Task name" type="text" id="task-name" size="50" required autofocus >
             <label for="task-tag">Tag</label>
             <input placeholder="Task tag" type="text" id="task-tag" size="50" >
+            <label for="task-priority">Priority</label>
+            <select id="task-priority" >
+                <option value=""></option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+            </select>
+            <label for="task-deadline-date">Deadline date</label>
+            <input placeholder="Deadline date" type="date" id="task-deadline-date" size="50" >
+            <label for="task-deadline-time">Deadline time</label>
+            <input placeholder="Deadline time" type="time" id="task-deadline-time" size="50" >
             <label for="task-notes">Notes</label>
             <input placeholder="Notes" type="text" id="task-notes" size="50" height="2" >
             <button type="submit" id="create-task">Create task</button>
@@ -33,6 +45,9 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Tag</th>
+                                <th>Priority</th>
+                                <th>Deadline date</th>
+                                <th>Deadline time</th>
                                 <th>Notes</th>
                                 <th>Completed</th>
                             </tr>
